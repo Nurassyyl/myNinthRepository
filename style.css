@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    max-width: 1120px;
+    margin: 40px auto;
+    display: flex;
+    vertical-align: middle;
+    justify-content: left;
+}
+input {
+    display: block;
+    margin: 15px;
+}
+
+.main-controls__checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.custom-checkbox {
+    padding: 8px 0;
+}
+
+.custom-checkbox+label {
+    padding: 8px 0;
+}
+
+#employee {
+    display: block;
+    margin: 15px;
+}
