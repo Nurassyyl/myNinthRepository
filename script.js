@@ -11,28 +11,31 @@ const checkbox = document.getElementById("checkbox");
 const date = document.getElementById("date");
 const select = document.querySelector(".header select");
 const button = document.getElementById("submit");
+const table = document.querySelector(".table");
 let screens = document.querySelectorAll(".screens");
 const parse = JSON.parse(localStorage.getItem("text"));
 console.log(parse);
 
 class Employee {
-    constructor(name, userName, age, jobTitle, organization, discharge, checkbox, date, select, button) {
-        this.name = name;
-        this.userName = userName;
-        this.age = age;
-        this.jobTitle = jobTitle;
-        this.organization = organization;
-        this.discharge = discharge;
-        this.checkbox = checkbox;
-        this.date = date;
-        this.select = select;
-        this.button = button;
+    constructor(parse) {
+        this.parse = parse;
+    }
+
+    render() {
+        parse.forEach(function (item) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + item.name + '</td>' + '<td>' + item.username + '</td>'
+            + '<td>' + item.age + '</td>' + '<td>' + item.discharge + '</td>' + '<td>' + item.organization + 
+            '</td>' + '<td>' + item.organization + '</td>' + '<td>' + item.organization + '</td>'
+            + '<td>' + item.organization + '</td>' + '<td>' + item.organization + '</td>' + 
+            '<button id="btn">Удалить</button>';
+            table.append(tr);
+        });
     }
 
     validator() {
         control.addEventListener("submit", (event) => {
             event.preventDefault();
-            console.log(name.value);
             localStorage.setItem("text", JSON.stringify([...parse || "", { name: name.value, username: userName.value, age: age.value, jobtitle: jobTitle.value, organization: organization.value, discharge: discharge.value }]));
         });
     }
@@ -62,8 +65,9 @@ class Driver extends Employee {
 }
 
 
-const em = new Employee();
+const em = new Employee(parse);
 em.validator();
+em.render();
 console.log(em);
 
 // const lock = new Locksmith("Shumek", 24);
