@@ -13,27 +13,25 @@ const select = document.querySelector(".header select");
 const button = document.getElementById("submit");
 let screens = document.querySelectorAll(".screens");
 const parse = JSON.parse(localStorage.getItem("text"));
-console.log(parse);
 
 class Employee {
-    constructor(name, userName, age, jobTitle, organization, discharge, checkbox, date, select, button) {
-        this.name = name;
-        this.userName = userName;
-        this.age = age;
-        this.jobTitle = jobTitle;
-        this.organization = organization;
-        this.discharge = discharge;
-        this.checkbox = checkbox;
-        this.date = date;
-        this.select = select;
-        this.button = button;
-    }
+    constructor() {}
 
     validator() {
         control.addEventListener("submit", (event) => {
             event.preventDefault();
-            console.log(name.value);
-            localStorage.setItem("text", JSON.stringify([...parse || "", { name: name.value, username: userName.value, age: age.value, jobtitle: jobTitle.value, organization: organization.value, discharge: discharge.value }]));
+            const selected = select.options[select.selectedIndex].textContent;
+            if (selected === "Слесарь") {
+                console.log(selected, "Слесарь");
+            } else if (selected === "Водитель") {
+                console.log(selected, "Водитель");
+            } else {
+                return
+            }
+
+            // console.log(name.value);
+            // localStorage.setItem("text", JSON.stringify([...parse || "", { name: name.value, username: userName.value, age: age.value, jobtitle: jobTitle.value, organization: organization.value, discharge: discharge.value }]));
+            // return "arman";
         });
     }
 }
@@ -53,7 +51,7 @@ class Locksmith extends Employee {
     }
 
     test() {
-        super.hello();
+        super.validator();
     }
 }
 
@@ -62,9 +60,13 @@ class Driver extends Employee {
 }
 
 
-const em = new Employee();
-em.validator();
-console.log(em);
+const lock = new Locksmith();
+lock.test();
+lock.skills = 'Privet';
+lock.skills = 'Privet';
+console.log(lock.skills);
+
+console.log(lock);
 
 // const lock = new Locksmith("Shumek", 24);
 // lock.skills = "Shumek";
